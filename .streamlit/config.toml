@@ -1,0 +1,15 @@
+# .streamlit/config.toml
+# Theme for the web interface. The same colours are used in streamlit_app.py;
+# setting them here too means built-in widgets (inputs, alerts) match the design.
+# https://docs.streamlit.io/develop/api-reference/configuration/config.toml
+
+[theme]
+base = "light"
+primaryColor = "#2B46D9"
+backgroundColor = "#F3F4F6"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#101216"
+font = "sans serif"
+
+[browser]
+gatherUsageStats = false

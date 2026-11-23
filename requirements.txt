@@ -1,0 +1,9 @@
+# Packages this project needs.
+# Install them into the virtual environment with:  pip install -r requirements.txt
+
+# Browser automation: lets Python open a real browser and inspect a website.
+playwright
+
+# The web interface (streamlit_app.py). The command-line app.py does not need it.
+# 1.67 is the version the interface was built and tested against (it uses st.iframe).
+streamlit>=1.67
