@@ -41,16 +41,45 @@ python check_setup.py
 
 ## Run the web interface
 
+Start the server from this folder:
+
 ```bash
 streamlit run streamlit_app.py --server.port 8501
 ```
 
-Then open <http://localhost:8501>, paste a URL such as `https://www.w3.org` and press
-**Analyze page**. A run takes roughly 20–60 seconds depending on the page.
+It prints a line like `You can now view your Streamlit app in your browser` followed by
+`URL: http://127.0.0.1:8501`. Open that address — **[http://localhost:8501](http://localhost:8501)** —
+paste a URL such as `https://www.w3.org` and press **Analyze page**. A run takes roughly
+20–60 seconds depending on the page.
 
-If you want the app reachable from other devices on your network, drop the
-`--server.port` flag or add `--server.address 0.0.0.0`. Binding to `127.0.0.1`
-(the safer default) restricts it to this machine.
+> **The address only works while the server is running.** `localhost` is not a website —
+it means "this computer". Two consequences:
+>
+> - Clicking `http://localhost:8501` from a GitHub page, an email or a document does
+>   nothing useful unless you have already started the server on your own machine.
+> - When you close the terminal window running `streamlit`, the app stops and the page
+>   will refuse to connect. Start it again with the command above.
+>
+> If the command runs but the browser will not connect, check the terminal: a startup
+error there (a missing package, port already in use) is the reason.
+
+### If the port is already in use
+
+Another copy is still running. Either use it at <http://localhost:8501>, or stop it:
+
+```bash
+# Windows
+netstat -ano | findstr :8501
+taskkill /PID <pid> /F
+# macOS / Linux
+lsof -ti:8501 | xargs kill
+```
+
+Or start on a different port with `--server.port 8502` and open that address instead.
+
+To reach the app from other devices on your network, add `--server.address 0.0.0.0` and
+use your machine's LAN IP. Binding to `127.0.0.1` (the safer default) restricts access
+to this machine only.
 
 ## Run the command line
 
